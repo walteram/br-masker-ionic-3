@@ -15,6 +15,7 @@ export class BrMaskModel {
   thousand: string;
   userCaracters: boolean = false;
   numberAndTousand: boolean = false;
+  acceptAll: boolean = false;
 }
 
 @Directive({
@@ -166,6 +167,9 @@ export class BrMaskerIonic3 implements OnInit, ControlValueAccessor {
       }
       if (this.brmasker.userCaracters) {
         return this.usingSpecialCharacters(v, this.brmasker.mask, this.brmasker.len);
+      }
+      if (this.brmasker.acceptAll) {
+        return v;
       }
       return this.onInput(v);
     } else {
